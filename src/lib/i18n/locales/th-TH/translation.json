@@ -1576,7 +1576,7 @@
 	"Retrieval": "การดึงข้อมูล",
 	"Retrieval Query Generation": "การสร้างคำค้นสำหรับการดึงข้อมูล",
 	"Retrieved {{count}} sources": "ดึงข้อมูลจาก {{count}} แหล่งข้อมูลแล้ว",
-	"Retrieved {{count}} sources_one": "",
+	"Retrieved {{count}} sources_one": "ดึงข้อมูลจาก {{count}} แหล่งข้อมูลแล้ว",
 	"Retrieved {{count}} sources_other": "เรียกดูที่มา {{count}} รายการ (อื่นๆ)",
 	"Retrieved 1 source": "ดึงมาแล้ว 1 แหล่งข้อมูล",
 	"Rich Text Input for Chat": "ช่องป้อนข้อความแบบ Rich Text สำหรับแชท",
