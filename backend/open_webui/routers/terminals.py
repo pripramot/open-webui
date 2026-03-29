@@ -236,7 +236,6 @@ async def ws_terminal(
     # Build upstream WebSocket URL (no token in URL)
     ws_base = base_url.replace("https://", "wss://").replace("http://", "ws://")
 
-    auth_type = connection.get("auth_type", "bearer")
     upstream_params = {}
     # For orchestrator-backed servers, pass user_id
     upstream_params["user_id"] = user.id
