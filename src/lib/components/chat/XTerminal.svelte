@@ -22,7 +22,7 @@
 	let resizeObserver: ResizeObserver | null = null;
 
 	// Resolve the active terminal server's info for the WebSocket URL
-	const getTerminalInfo = (): { serverId: string; baseUrl: string } | null => {
+	const getTerminalInfo = (): { serverId: string; baseUrl: string; apiKey?: string } | null => {
 		// System terminal (admin-configured, has an `id`)
 		const systemTerminals = ($terminalServers ?? []).filter((t: any) => t.id);
 		const systemMatch = systemTerminals.find((t: any) => t.id === $selectedTerminalId);
@@ -36,7 +36,7 @@
 		const directMatch = directTerminals.find((s: any) => s.url === $selectedTerminalId);
 		if (directMatch) {
 			// For direct terminals, construct WS URL from the server URL directly
-			return { serverId: '__direct__', baseUrl: directMatch.url };
+			return { serverId: '__direct__', baseUrl: directMatch.url, apiKey: directMatch.key ?? '' };
 		}
 
 		return null;
@@ -60,9 +60,7 @@
 			if (info.serverId === '__direct__') {
 				// Direct connection to open-terminal
 				const base = info.baseUrl.replace(/\/$/, '');
-				const directTerminals = ($settings?.terminalServers ?? []).filter((s: any) => s.url);
-				const directMatch = directTerminals.find((s: any) => s.url === $selectedTerminalId);
-				const apiKey = directMatch?.key ?? '';
+				const apiKey = info.apiKey ?? '';
 				authToken = apiKey;
 
 				// Create session
